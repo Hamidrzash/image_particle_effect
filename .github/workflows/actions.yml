@@ -35,7 +35,7 @@ jobs:
           git init
           # the repository to push the deploy into
           #! Update the following with your username and repository
-          git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/hamidrzash/snake.git
+          git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/Hamidrzash/image_particle_effect.git
           git fetch origin release
           git switch release
           # copy the build that is there in ROOT/build/web into ROOT/build/web-deploy
