@@ -1,0 +1,49 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    # Update branch according from where you will be pushing the code
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      my_secret: ${{secrets.ACCESS_TOKEN}}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - run: flutter clean
+      - run: flutter pub get
+      - run: flutter build web --release
+
+      # Web deploy now is contained in build/web directory
+      - run: |
+          cd build
+          mkdir web-deploy
+          cd web-deploy
+          #! Update with your Email ID associated with GitHub
+          git config --global user.email hamidrezash1384@gmail.com
+          #! Update with your username associated with GitHub
+          git config --global user.name hamidrzash
+          git config --global init.defaultBranch main
+          git init
+          # the repository to push the deploy into
+          #! Update the following with your username and repository
+          git remote add origin https://${{secrets.ACCESS_TOKEN}}@github.com/hamidrzash/snake.git
+          git fetch origin release
+          git switch release
+          # copy the build that is there in ROOT/build/web into ROOT/build/web-deploy
+          cp -R ../web/* .
+          git status
+          git add .
+          # add commit of the previous commit from main
+          echo ""
+          echo "Committing to release: ${{ github.event.head_commit.message }}"
+          echo ""
+          git commit -m "${{ github.event.head_commit.message }}"
+          git push origin release --force
