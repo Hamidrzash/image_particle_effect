@@ -56,8 +56,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
             final positionX = (x + adjustX).toDouble();
             final positionY = (y - adjustY).toDouble();
             particleArray.add(Particle(positionX, positionY, r, g, b));
-            particleArray.last.x = Random().nextDouble() * 5 * width;
-            particleArray.last.y = Random().nextDouble() * 5 * height;
+            particleArray.last.x = (Random().nextDouble() - 0.5) * 5 * width;
+            particleArray.last.y = (Random().nextDouble() - 0.5) * 5 * height;
           }
         }
       }
