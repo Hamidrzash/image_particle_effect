@@ -62290,9 +62290,9 @@ o.w=m
 o.x=2*m
 d.push(o)
 o=B.d.gZ(d)
-o.a=B.fc.xi()*5*q.gcg()
+o.a=(B.fc.xi()-0.5)*5*q.gcg()
 o=B.d.gZ(d)
-o.b=B.fc.xi()*5*q.gaO()}n+=3}p+=3}}return A.R(null,r)}})
+o.b=(B.fc.xi()-0.5)*5*q.gaO()}n+=3}p+=3}}return A.R(null,r)}})
 return A.S($async$oe,r)},
 qN(){var s=0,r=A.T(t.H),q=this
 var $async$qN=A.U(function(a,b){if(a===1)return A.Q(b,r)
