@@ -31,8 +31,67 @@
 
   <title>image_particle_effect</title>
   <link rel="manifest" href="manifest.json">
+
+  <style>
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    .loader {
+      border: 8px solid #F4F6F9;
+      border-radius: 50%;
+      border-top: 8px solid #347BDE;
+      width: 60px;
+      height: 60px;
+      -webkit-animation: spin 2s linear infinite;
+      /* Safari */
+      animation: spin 2s linear infinite;
+    }
+
+    @-webkit-keyframes spin {
+      0% {
+        -webkit-transform: rotate(0deg);
+      }
+      100% {
+        -webkit-transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <div class="loading">
+    <div class="loader"></div>
+  </div>
+  <script>
+    {{flutter_js}}
+    {{flutter_build_config}}
+
+    const loading = document.getElementsByClassName('loading')[0];
+    _flutter.loader.load({
+      onEntrypointLoaded: async function(engineInitializer) {
+        const appRunner = await engineInitializer.initializeEngine();
+        loading.remove();
+        await appRunner.runApp();
+      }
+    });
+  </script>
 </body>
 </html>
