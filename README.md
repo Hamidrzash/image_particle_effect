@@ -1,16 +1,10 @@
-# image_particle_effect
+# Flutter Image to Particles Effect 🎨✨
 
-Image particle effect
+Welcome to the **Flutter Image to Particles Effect** project! This repository contains an experimental animation effect created using Flutter, where an image transform into captivating particles. While it's primarily a fun exploration of Flutter's animation capabilities, it opens up numerous possibilities for creative applications.
 
-## Getting Started
+## 📺 Live Demo
+Check out the live demo to see the effect in action:
+[Live Demo](https://hamidrzash.github.io/image_particle_effect)
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🎥 Preview
+![](https://github.com/Hamidrzash/image_particle_effect/blob/main/preview.gif)
