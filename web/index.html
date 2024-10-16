@@ -10,15 +10,12 @@
 
     For more details:
     * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
   -->
-<!--  <base href="$FLUTTER_BASE_HREF">-->
+  <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="image_particle_effect">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,6 +28,13 @@
 
   <title>image_particle_effect</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    // The value below is injected by flutter build, do not touch.
+    const serviceWorkerVersion = null;
+  </script>
+  <!-- This script adds the flutter initialization JS code -->
+  <script src="flutter.js" defer></script>
 
   <style>
     .loading {
@@ -52,7 +56,6 @@
       width: 60px;
       height: 60px;
       -webkit-animation: spin 2s linear infinite;
-      /* Safari */
       animation: spin 2s linear infinite;
     }
 
@@ -74,24 +77,27 @@
       }
     }
   </style>
-
 </head>
 <body>
-  <div class="loading">
-    <div class="loader"></div>
-  </div>
-  <script>
-    {{flutter_js}}
-    {{flutter_build_config}}
-
-    const loading = document.getElementsByClassName('loading')[0];
-    _flutter.loader.load({
-      onEntrypointLoaded: async function(engineInitializer) {
-        const appRunner = await engineInitializer.initializeEngine();
-        loading.remove();
-        await appRunner.runApp();
+<div class="loading">
+  <div class="loader"></div>
+</div>
+<script>
+  window.addEventListener('load', function(ev) {
+    // Download main.dart.js
+    _flutter.loader.loadEntrypoint({
+      serviceWorker: {
+        serviceWorkerVersion: serviceWorkerVersion,
+      },
+      onEntrypointLoaded: function(engineInitializer) {
+        engineInitializer.initializeEngine().then(function(appRunner) {
+          const loading = document.getElementsByClassName('loading')[0];
+          loading.remove();
+          appRunner.runApp();
+        });
       }
     });
-  </script>
+  });
+</script>
 </body>
 </html>
