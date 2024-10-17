@@ -112,18 +112,18 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           },
           child: MouseRegion(
             onHover: (event) {
-              // mouse.x = event.position.dx;
-              // mouse.y = event.position.dy;
+              mouse.x = event.position.dx;
+              mouse.y = event.position.dy;
             },
             child: GestureDetector(
-              // onTap: () => showImage = !showImage,
-              onTap: () async {
+              onTap: () => showImage = !showImage,
+              // onTap: () async {
                 // for (int i = 0; i < particleArray.length; i++) {
                 //   particleArray[i].x = particleArray[i].baseX;
                 //   particleArray[i].y = particleArray[i].baseY;
                 // }
                 // pixelSize++;
-              },
+              // },
               child: Scaffold(
                 backgroundColor: Colors.black,
                 body: CustomPaint(
